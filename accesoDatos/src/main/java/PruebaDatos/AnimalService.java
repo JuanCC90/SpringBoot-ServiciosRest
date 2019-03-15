@@ -43,8 +43,7 @@ public class AnimalService {
 		if(animalRepo.findById(id)!=null) {
 			animalRepo.save(nuAnimal);
 		}
-		return animalRepo.findById(id).get(); 
-		
+		return animalRepo.findById(id).get(); 	
 	}
 	
 	public List<Animal> borraAnimal(long nId){
@@ -53,6 +52,4 @@ public class AnimalService {
 		
 	}
 	
-
-
 }

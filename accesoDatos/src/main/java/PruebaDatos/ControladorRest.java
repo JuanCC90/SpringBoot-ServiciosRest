@@ -41,7 +41,6 @@ public class ControladorRest {
 	// Actualizar animal por id
 	@PutMapping("/animals/put/{nId}")
 	public Animal replaceAnimal(@RequestBody Animal newAnimal, @PathVariable Long nId) {
-
 		return aniServi.actualizaAnimal(newAnimal, nId);
 	}
 

@@ -34,7 +34,6 @@ public class Animal {
 	}
 	
 	//Metodos-Funciones:
-	
 	public long getId() {
 		return id;
 	}
