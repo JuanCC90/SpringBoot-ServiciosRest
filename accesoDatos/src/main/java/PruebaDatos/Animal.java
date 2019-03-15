@@ -15,6 +15,7 @@ public class Animal {
 	private String color;
 	private String extremidades;
 	
+	
 	//Constructores:
 	protected Animal() {
 		

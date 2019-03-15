@@ -21,7 +21,7 @@ public class ControladorRest {
 
 	// Devuelve todos los elementos de la base de datos
 	@RequestMapping("/animals")
-	public List<Animal> getAll() {
+	public List<AnimalDTO> getAll() {
 		return aniServi.getAll();
 	}
 
@@ -41,6 +41,7 @@ public class ControladorRest {
 	// Actualizar animal por id
 	@PutMapping("/animals/put/{nId}")
 	public Animal replaceAnimal(@RequestBody Animal newAnimal, @PathVariable Long nId) {
+
 		return aniServi.actualizaAnimal(newAnimal, nId);
 	}
 

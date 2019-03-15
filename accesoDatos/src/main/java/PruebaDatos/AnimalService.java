@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,16 +18,23 @@ public class AnimalService {
 	@Autowired
 	private AnimalRepository animalRepo;
 	
-	public List<Animal> getAll(){
-		List<Animal> animals = new ArrayList<>();
+	
+	public List<AnimalDTO> getAll(){
+		
+		ModelMapper mapper = new ModelMapper();
+		
+		List<AnimalDTO> animals = new ArrayList<>();
 		for (Animal a : animalRepo.findAll()) {
-			animals.add(a);
+			AnimalDTO dto = mapper.map(a, AnimalDTO.class);
 		}
 		return animals;
 	}
 	
-	public List<Animal> setAnimal(Animal nuAnimal) {
-		animalRepo.save(nuAnimal);
+	public List<Animal> setAnimal(AnimalDTO nuAnimal) {
+		ModelMapper mapper = new ModelMapper();
+		
+		Animal animal = mapper.map(nuAnimal, Animal.class);
+		animalRepo.save(animal);
 		List<Animal> animals = new ArrayList<>();
 		for (Animal a : animalRepo.findAll()) {
 			animals.add(a);
