@@ -26,13 +26,13 @@ public class AnimalService {
 		List<AnimalDTO> animals = new ArrayList<>();
 		for (Animal a : animalRepo.findAll()) {
 			AnimalDTO dto = mapper.map(a, AnimalDTO.class);
+			animals.add(dto);
 		}
 		return animals;
 	}
 	
 	public List<Animal> setAnimal(AnimalDTO nuAnimal) {
 		ModelMapper mapper = new ModelMapper();
-		
 		Animal animal = mapper.map(nuAnimal, Animal.class);
 		animalRepo.save(animal);
 		List<Animal> animals = new ArrayList<>();

@@ -6,6 +6,8 @@ import lombok.Data;
 
 import PruebaDatos.Animal;
 import PruebaDatos.ControladorRest;
+import PruebaDatos.AnimalService;
+import PruebaDatos.AnimalRepository;
 
 @Data
 public class AnimalDTO {
