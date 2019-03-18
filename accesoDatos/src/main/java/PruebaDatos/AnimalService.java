@@ -49,19 +49,28 @@ public class AnimalService {
 		Animal animal=mapper.map(nId, Animal.class);
 		animalRepo.findById(nId);
 		List<AnimalDTO> animals = new ArrayList<>();
-		for(Animal a:animalRepo.findById(nId)) {
-			AnimalDTO dto =  mapper.map(a, AnimalDTO.class);
-			animals.add(dto);
+		for(Animal a:animalRepo.findAll()) {
+			if(a.getId()==nId) {
+				AnimalDTO dto =  mapper.map(a, AnimalDTO.class);
+				animals.add(dto);
+			}
+			
 		}
 		return animals;
 	}
 
 	public List<AnimalDTO> actualizaAnimal(Animal nuAnimal, long id){
-		nuAnimal.setId(id);
-		if(animalRepo.findById(id)!=null) {
-			animalRepo.save(nuAnimal);
+		ModelMapper mapper = new ModelMapper();
+		List<AnimalDTO> animals = new ArrayList<>();
+		for(Animal a:animalRepo.findAll()) {
+			if(a.getId()==id) {
+				nuAnimal.setId(id);
+				animalRepo.save(nuAnimal);
+				AnimalDTO dto = mapper.map(a, AnimalDTO.class);
+				animals.add(dto);
+			}
 		}
-		return animalRepo.findById(id).get(); 	
+		return animals;
 	}
 	
 	public List<AnimalDTO> borraAnimal(long nId){

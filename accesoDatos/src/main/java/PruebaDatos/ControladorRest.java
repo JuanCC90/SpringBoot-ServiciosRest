@@ -42,7 +42,7 @@ public class ControladorRest {
 	// Actualizar animal por id
 	@PutMapping("/animals/put/{nId}")
 	public List<AnimalDTO> replaceAnimal(@RequestBody Animal newAnimal, @PathVariable Long nId) {
-		List<AnimalDTO> animals= aniServi.actualizaAnimal(nuAnimal, id);
+		List<AnimalDTO> animals= aniServi.actualizaAnimal(newAnimal, nId);
 		return animals;
 	}
 
