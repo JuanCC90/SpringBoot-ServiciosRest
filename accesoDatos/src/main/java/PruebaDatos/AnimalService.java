@@ -21,9 +21,7 @@ public class AnimalService {
 	
 	
 	public List<AnimalDTO> getAll(){
-		
 		ModelMapper mapper = new ModelMapper();
-		
 		List<AnimalDTO> animals = new ArrayList<>();
 		for (Animal a : animalRepo.findAll()) {
 			AnimalDTO dto = mapper.map(a, AnimalDTO.class);
@@ -53,8 +51,7 @@ public class AnimalService {
 			if(a.getId()==nId) {
 				AnimalDTO dto =  mapper.map(a, AnimalDTO.class);
 				animals.add(dto);
-			}
-			
+			}	
 		}
 		return animals;
 	}
@@ -82,7 +79,6 @@ public class AnimalService {
 			animals.add(dto);
 		}
 		return animals;
-		
 	}
 	
 }
