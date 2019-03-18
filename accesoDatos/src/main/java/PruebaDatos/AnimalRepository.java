@@ -11,5 +11,7 @@ public interface AnimalRepository extends CrudRepository<Animal, Long> {
 	List<Animal> findByNombre(String nombre);
 	List<Animal> getById(String id);
 	List<Animal> findAll();	
+	List<Animal> clear();
+	List<Animal> deleteById();
 	
 }
