@@ -3,6 +3,10 @@ package PruebaDatos;
 import org.springframework.data.annotation.Id;
 
 import lombok.Data;
+
+import PruebaDatos.Animal;
+import PruebaDatos.ControladorRest;
+
 @Data
 public class AnimalDTO {
 	
@@ -12,7 +16,7 @@ public class AnimalDTO {
 	private String nombre;
 	private String color;
 	private String extremidades;
-	private String patat;
+	
 	
 	public boolean esAnimalDeGranja() {
 		if(this.nombre == "pollo") {
@@ -20,4 +24,7 @@ public class AnimalDTO {
 		}
 		return false;
 	}
+	
+	
+	
 }

@@ -27,7 +27,7 @@ public class ControladorRest {
 
 	// Metodo para añadir elementos a la BD
 	@PostMapping("/animals/post")
-	public List<Animal> nuAnimal(@RequestBody Animal nuAnimal) {
+	public List<Animal> nuAnimal(@RequestBody AnimalDTO nuAnimal) {
 		List<Animal> animals = aniServi.setAnimal(nuAnimal);
 		return animals;
 	}
