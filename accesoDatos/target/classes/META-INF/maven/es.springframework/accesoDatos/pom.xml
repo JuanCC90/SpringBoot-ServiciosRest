@@ -16,6 +16,9 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<joinfaces.version>3.3.0-rc2</joinfaces.version>
 	</properties>
 
 	<dependencies>
@@ -63,6 +66,8 @@
 			<artifactId>modelmapper</artifactId>
 			<version>0.7.5</version>
 		</dependency>
+		
+		
 
 
 	</dependencies>
