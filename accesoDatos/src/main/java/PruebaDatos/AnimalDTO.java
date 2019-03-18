@@ -25,6 +25,36 @@ public class AnimalDTO {
 		return false;
 	}
 	
+	public void setId(long id) {
+		this.id=id;
+	}
 	
+	public long getId() {
+		return this.id;
+	}
+	
+	public void setString(String nombre) {
+		this.nombre=nombre;
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public void setColor(String color) {
+		this.color=color;
+	}
+	
+	public String getColor() {
+		return this.color;
+	}
+	
+	public void setExtremidades(String extremidades) {
+		this.extremidades=extremidades;
+	}
+	
+	public String getExtremidades() {
+		return this.extremidades;
+	}
 	
 }
