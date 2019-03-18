@@ -18,12 +18,12 @@ public class AnimalDTO {
 	private String extremidades;
 	
 	
-	public boolean esAnimalDeGranja() {
+	/*public boolean esAnimalDeGranja() {
 		if(this.nombre == "pollo") {
 			return true;
 		}
 		return false;
-	}
+	}*/
 	
 	public void setId(long id) {
 		this.id=id;
