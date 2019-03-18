@@ -27,28 +27,30 @@ public class ControladorRest {
 
 	// Metodo para añadir elementos a la BD
 	@PostMapping("/animals/post")
-	public List<Animal> nuAnimal(@RequestBody AnimalDTO nuAnimal) {
-		List<Animal> animals = aniServi.setAnimal(nuAnimal);
+	public List<AnimalDTO> nuAnimal(@RequestBody AnimalDTO nuAnimal) {
+		List<AnimalDTO> animals = aniServi.setAnimal(nuAnimal);
 		return animals;
 	}
 
 	// Buscar animal por id
 	@GetMapping("/animals/get/{nId}")
-	public Animal busqueda(@PathVariable("nId") Long nId) {
-		return aniServi.busca(nId);
+	public List<AnimalDTO> busqueda(@PathVariable("nId") Long nId) {
+		List<AnimalDTO> animals= aniServi.busca(nId);
+		return animals;
 	}
 
 	// Actualizar animal por id
 	@PutMapping("/animals/put/{nId}")
-	public Animal replaceAnimal(@RequestBody Animal newAnimal, @PathVariable Long nId) {
-
-		return aniServi.actualizaAnimal(newAnimal, nId);
+	public List<AnimalDTO> replaceAnimal(@RequestBody Animal newAnimal, @PathVariable Long nId) {
+		List<AnimalDTO> animals= aniServi.actualizaAnimal(nuAnimal, id);
+		return animals;
 	}
 
 	// Borra animal por id
 	@DeleteMapping("/animals/delete/{nId}")
-	public List<Animal> deleteAnimal(@PathVariable Long nId) {
-		return aniServi.borraAnimal(nId);
+	public List<AnimalDTO> deleteAnimal(@PathVariable Long nId) {
+		List <AnimalDTO> animals=aniServi.borraAnimal(nId);
+		return animals;
 	}
 
 }

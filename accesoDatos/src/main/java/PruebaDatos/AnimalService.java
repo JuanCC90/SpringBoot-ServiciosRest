@@ -3,6 +3,7 @@ package PruebaDatos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
+import java.lang.*;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,22 +32,31 @@ public class AnimalService {
 		return animals;
 	}
 	
-	public List<Animal> setAnimal(AnimalDTO nuAnimal) {
+	public List<AnimalDTO> setAnimal(AnimalDTO nuAnimal) {
 		ModelMapper mapper = new ModelMapper();
 		Animal animal = mapper.map(nuAnimal, Animal.class);
 		animalRepo.save(animal);
-		List<Animal> animals = new ArrayList<>();
-		for (Animal a : animalRepo.findAll()) {
-			animals.add(a);
+		List<AnimalDTO> animals= new ArrayList<>();
+		for(Animal a:animalRepo.findAll()) {
+			AnimalDTO dto = mapper.map(a, AnimalDTO.class);
+			animals.add(dto);
 		}
 		return animals;
 	}
 	
-	public Animal busca(Long nId) {
-		return animalRepo.findById(nId).orElseThrow(() -> new AnimalNotFoundException(nId));
+	public List<AnimalDTO> busca(Long nId) {
+		ModelMapper mapper = new ModelMapper();
+		Animal animal=mapper.map(nId, Animal.class);
+		animalRepo.findById(nId);
+		List<AnimalDTO> animals = new ArrayList<>();
+		for(Animal a:animalRepo.findById(nId)) {
+			AnimalDTO dto =  mapper.map(a, AnimalDTO.class);
+			animals.add(dto);
+		}
+		return animals;
 	}
 
-	public Animal actualizaAnimal(Animal nuAnimal, long id){
+	public List<AnimalDTO> actualizaAnimal(Animal nuAnimal, long id){
 		nuAnimal.setId(id);
 		if(animalRepo.findById(id)!=null) {
 			animalRepo.save(nuAnimal);
@@ -54,9 +64,15 @@ public class AnimalService {
 		return animalRepo.findById(id).get(); 	
 	}
 	
-	public List<Animal> borraAnimal(long nId){
+	public List<AnimalDTO> borraAnimal(long nId){
+		ModelMapper mapper = new ModelMapper();
 		animalRepo.deleteById(nId);
-		return animalRepo.findAll();
+		List<AnimalDTO> animals = new ArrayList<>();
+		for(Animal a:animalRepo.findAll()) {
+			AnimalDTO dto= mapper.map(a, AnimalDTO.class);
+			animals.add(dto);
+		}
+		return animals;
 		
 	}
 	
